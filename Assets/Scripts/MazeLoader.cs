@@ -27,6 +27,7 @@ public class MazeLoader : MonoBehaviour
     public GameObject keyPrefab;
     public GameObject torchPickupPrefab;
     public GameObject lavaPrefab;
+    public GameObject heartPrefab;
 
     // Where player starts the level
     public Vector3 StartPosition { get; private set; }
@@ -63,6 +64,7 @@ public class MazeLoader : MonoBehaviour
 
         string[] rows = levels[index].text.Replace("\r", "").Trim().Split('\n');
         int height = rows.Length;
+        int keyCount = 0;
 
         for (int r = 0; r < height; r++)
         {
@@ -86,12 +88,15 @@ public class MazeLoader : MonoBehaviour
                 {
                     case 'S': StartPosition = pos; RespawnPlayer(); break;
                     case 'D': Spawn(doorPrefab, pos); break;
-                    case 'K': Spawn(keyPrefab, pos); break;
+                    case 'K': keyCount++; Spawn(keyPrefab, pos); break;
                     case 'T': Spawn(torchPickupPrefab, pos); break;
                     case 'L': Spawn(lavaPrefab, pos); break;
+                    case 'H': if (!GameManager.Instance.HeartUsed(index)) Spawn(heartPrefab, pos); break;
                 }
             }
         }
+
+        GameManager.Instance.StartLevel(keyCount);
     }
 
     void Spawn (GameObject prefab, Vector3 pos)
