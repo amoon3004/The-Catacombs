@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 502129174}
   - component: {fileID: 502129175}
+  - component: {fileID: 502129176}
   m_Layer: 0
   m_Name: TorchLight
   m_TagString: Untagged
@@ -224,6 +225,20 @@ MonoBehaviour:
       type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
         m_Cache: []
+--- !u!114 &502129176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502129173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcd17badadb6fc40ae624079056c8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchLight
+  boostedOuterRadius: 5
+  changeSpeed: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +496,7 @@ GameObject:
   - component: {fileID: 876741047}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -924,7 +939,7 @@ MonoBehaviour:
   placeholderWallColor: {r: 0.15, g: 0.13, b: 0.12, a: 1}
   doorPrefab: {fileID: 0}
   keyPrefab: {fileID: 0}
-  torchPickupPrefab: {fileID: 0}
+  torchPickupPrefab: {fileID: 7356911933806946867, guid: 2f7fef8e5b2b2724c96e2ba0b095966d, type: 3}
   lavaPrefab: {fileID: 0}
 --- !u!4 &1905454316
 Transform:

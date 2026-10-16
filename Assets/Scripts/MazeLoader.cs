@@ -96,7 +96,7 @@ public class MazeLoader : MonoBehaviour
 
     void Spawn (GameObject prefab, Vector3 pos)
     {
-        if (prefab != null) Instantiate(prefab, pos, Quaternion.identity, levelObjects);
+        if (prefab != null) Instantiate(prefab, pos, prefab.transform.rotation, levelObjects);
     }
 
     // Builds a 1x1 tile to test maze functionality before art is added
