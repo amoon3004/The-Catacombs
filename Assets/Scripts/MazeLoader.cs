@@ -22,7 +22,7 @@ public class MazeLoader : MonoBehaviour
     public Color placeholderFloorColor = new Color(0.45f, 0.40f, 0.33f);
     public Color placeholderWallColor = new Color(0.15f, 0.13f, 0.12f);
 
-    [Header("Prefabs (leave empty until they exist")]
+    [Header("Prefabs")]
     public GameObject doorPrefab;
     public GameObject keyPrefab;
     public GameObject torchPickupPrefab;

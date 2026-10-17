@@ -1348,11 +1348,11 @@ MonoBehaviour:
   wallTile: {fileID: 0}
   placeholderFloorColor: {r: 0.45, g: 0.4, b: 0.33, a: 1}
   placeholderWallColor: {r: 0.15, g: 0.13, b: 0.12, a: 1}
-  doorPrefab: {fileID: 0}
-  keyPrefab: {fileID: 0}
+  doorPrefab: {fileID: 2638544304258253058, guid: 7ae220151959bf647b0ada40fcbbe2d1, type: 3}
+  keyPrefab: {fileID: 2790219790946802534, guid: 3ff5d1ac9b72d7d48935d57b81fbd903, type: 3}
   torchPickupPrefab: {fileID: 7356911933806946867, guid: 2f7fef8e5b2b2724c96e2ba0b095966d, type: 3}
   lavaPrefab: {fileID: 0}
-  heartPrefab: {fileID: 0}
+  heartPrefab: {fileID: 6260174786578893209, guid: 7a2305ec93569e540ac65723f905a5aa, type: 3}
 --- !u!4 &1905454316
 Transform:
   m_ObjectHideFlags: 0
