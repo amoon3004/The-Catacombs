@@ -44,7 +44,12 @@ public class MazeLoader : MonoBehaviour
     // Move to the next level (stays on last level when there are no more)
     public void NextLevel()
     {
-        currentLevel = Mathf.Min(currentLevel + 1, levels.Length - 1);
+        if (currentLevel >= levels.Length -1)
+        {
+            GameManager.Instance.Victory();
+            return;
+        }
+        currentLevel++;
         Load(currentLevel);
     }
 

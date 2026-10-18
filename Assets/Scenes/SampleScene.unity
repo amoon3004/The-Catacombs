@@ -1340,6 +1340,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: e24d624e36838284cb033952af38563f, type: 3}
   - {fileID: 4900000, guid: ea9b4d228e3ccc14a93a1477348f6f69, type: 3}
   - {fileID: 4900000, guid: 8a1494bf3fc1f8847aec85326570652a, type: 3}
+  - {fileID: 4900000, guid: d836a33ea9cf54943bcc81d241dfb0a2, type: 3}
+  - {fileID: 4900000, guid: 589b5ed77e4964747b5b5f6397ef9fef, type: 3}
   currentLevel: 0
   player: {fileID: 876741046}
   floorMap: {fileID: 2145773983}

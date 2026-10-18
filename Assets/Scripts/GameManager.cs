@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     // Levels whose heart was already used. Cleared when game is over
     readonly HashSet<int> heartsUsed = new HashSet<int>();
     float messageTimeLeft;
+    bool gameWon;
 
     void Awake()
     {
@@ -101,11 +102,40 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        RestartGame();
+        ShowMessage("GAME OVER!!! Back to the bottom of the Catacombs!", 3f);
+    }
+
+    // Called by MazeLoader when the last level door is opened
+    public void Victory()
+    {
+        if (gameWon) return;
+        gameWon = true;
+        ShowMessage("You escaped the Catacombs!!!", 5f);
+        SetPlayerFrozen(true);
+        Invoke(nameof(RestartAfterVictory), 5f);
+    }
+
+    void RestartAfterVictory()
+    {
+        gameWon = false;
+        SetPlayerFrozen(false);
+        RestartGame();
+    }
+
+    // Full reset
+    void RestartGame()
+    {
         Lives = maxLives;
         heartsUsed.Clear();
         mazeLoader.currentLevel = 0;
         mazeLoader.Load(0);
-        ShowMessage("GAME OVER!!! Back to the bottom of the Catacombs!", 3f);
+    }
+
+    // Turns player movement off or back on
+    void SetPlayerFrozen(bool frozen)
+    {
+        mazeLoader.player.GetComponent<PlayerMovement>().enabled = !frozen;
     }
 
     public void ShowMessage(string text, float seconds = -1f)
