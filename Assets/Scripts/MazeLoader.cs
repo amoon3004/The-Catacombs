@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 
 public class MazeLoader : MonoBehaviour
 {
-    [Header("Levels (text files, in order)")]
+    [Header("Levels")]
     public TextAsset[] levels;
     public int currentLevel = 0;
 
@@ -16,7 +16,7 @@ public class MazeLoader : MonoBehaviour
     public Tilemap floorMap;
     public Tilemap wallMap;
 
-    [Header("Tiles (leave empty to use colored squares")]
+    [Header("Tiles")]
     public TileBase floorTile;
     public TileBase wallTile;
     public Color placeholderFloorColor = new Color(0.45f, 0.40f, 0.33f);
