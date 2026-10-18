@@ -8,10 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
     Vector2 moveDir;
+    SpriteRenderer sprite;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Read the keyboard each frame
@@ -28,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
         // make diagonal movement the same speed
         moveDir = new Vector2(x, y).normalized;
+
+        // Face left or right based on movement. Keep last direction when moving up/down
+        if (x != 0f) sprite.flipX = x < 0f;
     }
 
     //Apply move speed to physics so wall collisions stay solid
