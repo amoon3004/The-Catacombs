@@ -25,6 +25,7 @@ public class TorchPickup : MonoBehaviour
         if (nearbyTorch != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
             nearbyTorch.Boost(boostSeconds);
+            SoundManager.Play(Sfx.Torch);
             Destroy(gameObject);
         }
     }

@@ -10,6 +10,7 @@ public class KeyPickup : PlayerTrigger
         if (playerNearby && Keyboard.current.eKey.wasPressedThisFrame)
         {
             GameManager.Instance.AddKey();
+            SoundManager.Play(Sfx.Key);
             Destroy(gameObject);
         }
     }

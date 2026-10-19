@@ -12,7 +12,11 @@ public class HeartPickup : PlayerTrigger
             int level = GameManager.Instance.mazeLoader.currentLevel;
 
             // Only disappears if it was used (lives not full)
-            if (GameManager.Instance.TryUseHeart(level)) Destroy(gameObject);
+            if (GameManager.Instance.TryUseHeart(level))
+            {
+                SoundManager.Play(Sfx.Heart);
+                Destroy(gameObject);
+            }
         }
     }
 }

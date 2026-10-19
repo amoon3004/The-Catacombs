@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 4f; // tiles per second
+    public float stepInterval = 0.35f; // seconds between step sounds
+    float stepTimer;
 
     Rigidbody2D rb;
     Vector2 moveDir;
@@ -30,6 +32,21 @@ public class PlayerMovement : MonoBehaviour
 
         // make diagonal movement the same speed
         moveDir = new Vector2(x, y).normalized;
+
+        // Footstep sounds while moving
+        if (moveDir != Vector2.zero)
+        {
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f)
+            {
+                SoundManager.PlayFootstep();
+                stepTimer = stepInterval;
+            }
+        }
+        else
+        {
+            stepTimer = 0f; // first step plays as soon as player moves
+        }
 
         // Face left or right based on movement. Keep last direction when moving up/down
         if (x != 0f) sprite.flipX = x < 0f;

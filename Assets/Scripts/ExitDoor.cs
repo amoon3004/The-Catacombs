@@ -13,15 +13,18 @@ public class ExitDoor : PlayerTrigger
 
         if (missing <= 0)
         {
+            SoundManager.Play(Sfx.DoorOpen);
             GameManager.Instance.ShowMessage("The door has been opened...");
             GameManager.Instance.mazeLoader.NextLevel();
         }
         else if (missing == 1)
         {
+            SoundManager.Play(Sfx.DoorClose);
             GameManager.Instance.ShowMessage("Requires 1 more key to open...");
         }
         else
         {
+            SoundManager.Play(Sfx.DoorClose);
             GameManager.Instance.ShowMessage("Requires " + missing + " more keys to open...");
         }
     }

@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        SoundManager.Play(Sfx.GameOver);
         RestartGame();
         ShowMessage("GAME OVER!!! Back to the bottom of the Catacombs!", 3f);
     }
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameWon) return;
         gameWon = true;
+        SoundManager.Play(Sfx.Victory);
         ShowMessage("You escaped the Catacombs!!!", 5f);
         SetPlayerFrozen(true);
         Invoke(nameof(RestartAfterVictory), 5f);
