@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 // Tracks lives, keys, and on screen text for the playthrough
 public class GameManager : MonoBehaviour
@@ -16,10 +17,12 @@ public class GameManager : MonoBehaviour
     [Header("On-Screen text")]
     public TMP_Text livesText;
     public TMP_Text keysText;
+    public TMP_Text levelText;
     public TMP_Text messageText;
 
     [Header("Scene references")]
     public MazeLoader mazeLoader;
+    public GameObject victoryPanel;
 
     public int Lives { get; private set; }
     public int KeysHeld { get; private set; }
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         Lives = maxLives;
         messageText.text = "";
+        victoryPanel.SetActive(false);
     }
 
     void Update()
@@ -113,16 +117,14 @@ public class GameManager : MonoBehaviour
         if (gameWon) return;
         gameWon = true;
         SoundManager.Play(Sfx.Victory);
-        ShowMessage("You escaped the Catacombs!!!", 5f);
         SetPlayerFrozen(true);
-        Invoke(nameof(RestartAfterVictory), 5f);
+        victoryPanel.SetActive(true); // show victory screen
     }
 
-    void RestartAfterVictory()
+    // Main menu button on the victory screen
+    public void ReturnToMenu()
     {
-        gameWon = false;
-        SetPlayerFrozen(false);
-        RestartGame();
+        SceneManager.LoadScene("Title");
     }
 
     // Full reset
@@ -150,5 +152,6 @@ public class GameManager : MonoBehaviour
     {
         livesText.text = "Lives: " + Lives;
         keysText.text = "Keys: " + KeysHeld + "/" + KeysNeeded;
+        levelText.text = "Level: " + (mazeLoader.currentLevel + 1);
     }
 }
